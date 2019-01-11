@@ -16,7 +16,7 @@ getResults()
 
 $("#saved").on("click", function() {
   //GET route to /saved to display 
-  console.log("fthis");
+  console.log("bubble");
   
 })
 $("#clear").on("click", function() {
