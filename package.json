@@ -1,0 +1,32 @@
+{
+  "name": "reddit_reboot",
+  "version": "1.0.0",
+  "description": "reddit scraper",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nosidam48/Reddit_Reboot.git"
+  },
+  "keywords": [
+    "reddit",
+    "mongo",
+    "scrape"
+  ],
+  "author": "Mad T",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nosidam48/Reddit_Reboot/issues"
+  },
+  "homepage": "https://github.com/nosidam48/Reddit_Reboot#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.4.3",
+    "morgan": "^1.9.1"
+  }
+}
