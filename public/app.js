@@ -15,10 +15,10 @@ function getResults() {
 getResults()
 
 $("#saved").on("click", function() {
-  
+  //GET route to /saved to display 
 })
 $("#clear").on("click", function() {
-  $.ajax
+ //AJAX request to drop the database
 })
 $("#scrape").on("click", function() {
   $.getJSON("/scrape", function(data) {
@@ -32,8 +32,12 @@ $("#scrape").on("click", function() {
   });
 })
 $("#save-art").on("click", function() {
-
+//AJAX request to update saved to true
 })
 $("#note").on("click", function() {
+//Create a modal or div that's hidden and then show it when note is clicked
+})
 
+$("#save-note").on("click", function() {
+  //AJAX request to save the note to the item
 })
