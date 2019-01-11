@@ -16,7 +16,7 @@ getResults()
 
 $("#saved").on("click", function() {
   //GET route to /saved to display 
-  console.log("jerry");
+  console.log("fthis");
   
 })
 $("#clear").on("click", function() {
