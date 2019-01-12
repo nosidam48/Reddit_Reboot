@@ -38,6 +38,13 @@ var db = require("./models");
 
 // Routes
 // ======
+app.get("/", function(req, res) {
+  db.Art.find({ saved: false })
+    .then(function(dbArticles) {
+      res.render("index", { articles: dbArticles });
+    });
+  });
+
 app.get("/all", function(req, res) {
   // Find all results from the scrapedData collection in the db
   db.Art.find({}, function(error, found) {
@@ -54,10 +61,29 @@ app.get("/all", function(req, res) {
 });
 
 // Simple index route
-app.get("/", function(req, res) {
-  res.render("index")
+app.get("/posts", function(req, res) {
+  db.Art.find({ saved: false })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
 });
-  
+
+app.post("/posts/:id", function(req,res) {
+  db.Art.findByIdAndUpdate(
+    req.params.id,
+      { $set: { saved: true } },
+      { new: true }
+    ).then(dbPost => {
+      res.json("Post Saved");
+    })
+    .catch(err => {
+      res.json(err);
+    });
+})
+
 app.get("/scrape", function(req, res) {
   // Make a request via axios for the news section of `ycombinator`
   axios.get("https://www.theonion.com/").then(function(response) {
@@ -70,7 +96,6 @@ app.get("/scrape", function(req, res) {
       var link = $(element).attr("data-permalink");
       var picture = $(element).find($("img")).attr("data-src");
       
-      console.log(title + "\n" + link + "\n" + picture);
 
       // If this found element had both a title and a link
       if (title && link && picture) {
@@ -91,14 +116,11 @@ app.get("/scrape", function(req, res) {
           }
         });
       }
-      // res.render("index", {title: title, link: link, picture: picture})
     });
     
   });
   
 });
-// res.render("index")
-// });
 
 
 app.listen(process.env.PORT || 3000, function() {
